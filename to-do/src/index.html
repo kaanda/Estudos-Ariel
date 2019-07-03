@@ -8,59 +8,10 @@
     <title>To-do List</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../assets/fontawesome-free-5.9.0-web/css/all.min.css" rel="stylesheet">
+    <link href="estilo.css" rel="stylesheet">
+
 </head>
-<style>
-    body {
-        background: #2B2929;
-    }
-
-    .col-11 {
-        background: #2D2C2C;
-        padding: 15px;
-    }
-
-    input.form-control:focus {
-        background: #2D2C2C;
-        border: 0;
-        border-style: none;
-    }
-
-    .form-check {
-        color: #c2c2c2;
-    }
-
-    .form-control {
-        color: #2D2C2C;
-        background-color: #2D2C2C;
-        border: 1px solid #c2c2c2;
-        height: 100%;
-    }
-
-    .form-check-input:disabled~.form-check-label {
-        text-decoration: line-through;
-    }
-
-    .input-group-text {
-        background-color: #2D2C2C;
-        border: 1px solid #c2c2c2;
-        height: 32px;
-        padding: 10px;
-    }
-
-    h2 {
-        color: #C4C4C4;
-        text-align: center;
-    }
-
-    #tasks-pendentes {
-        font-size: 15px;
-        color: #067B95;
-    }
-
-    .btn {
-        height: 32px;
-    }
-</style>
 </head>
 
 <body>
@@ -69,7 +20,7 @@
         <div class="row">
             <div class="col" id="coluna-esquerda"></div>
 
-            <div class="col-11" id="coluna-meio">
+            <div class="col-lg-8 col-12" id="coluna-meio">
 
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Nova tarefa" aria-label="Recipient's username"
@@ -80,20 +31,58 @@
                 </div>
 
                 <h2>To-do</h2>
-                <span id="tasks-pendentes">2 tasks pendentes</span>
+                <div class="container container-lista">
+                    <span id="tasks-pendentes">2 tasks pendentes</span>
 
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
-                        Lavar a louça
-                    </label>
+                    <ul>
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Lavar a louça
+                                </label>
+
+                                <div class="acoes">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                                <label class="form-check-label" for="defaultCheck2">
+                                    Disabled checkbox
+                                </label>
+
+                                <div class="acoes">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Lavar a louça
+                                </label>
+
+                                <div class="acoes">
+                                    <i class="fas fa-pencil-alt"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </div>
+
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
-                    <label class="form-check-label" for="defaultCheck2">
-                        Disabled checkbox
-                    </label>
-                </div>
+
             </div>
 
             <div class="col" id="coluna-direita"></div>
