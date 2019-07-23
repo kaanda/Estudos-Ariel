@@ -1,76 +1,82 @@
 body {
-    background: #2B2929;
+  background: #2b2929;
+}
+span {
+  color: #ffffff;
+  margin-bottom: 1em;
 }
 
 ul {
-    list-style: none;
-    padding: 0px;
+  list-style: none;
+  padding: 0px;
+  margin-top: 1em;
 }
 
 li {
-    height: 30px;
+  height: 30px;
 }
 
 .col-lg-8 {
-    background: #2D2C2C;
-    padding: 15px;
+  background: #2d2c2c;
+  padding: 15px;
 }
 
 .container-lista {
-    width: 100%;
-    padding-right: 50px;
-    padding-left: 50px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 100%;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 input.form-control:focus {
-    background: #2D2C2C;
-    border: 0;
-    border-style: none;
+  background: #2d2c2c;
+  border: 0;
+  border-style: none;
+  color: #ffffff;
 }
 
 .form-check {
-    color: #c2c2c2;
+  color: #c2c2c2;
 }
 
 .form-control {
-    color: #2D2C2C;
-    background-color: #2D2C2C;
-    border: 1px solid #c2c2c2;
-    height: 100%;
+  background-color: #2d2c2c;
+  border: 1px solid #c2c2c2;
+  height: 100%;
+  color: #ffffff;
 }
 
-.form-check-input:disabled~.form-check-label {
-    text-decoration: line-through;
+.form-check-input:disabled ~ .form-check-label {
+  text-decoration: line-through;
 }
 
 .input-group-text {
-    background-color: #2D2C2C;
-    border: 1px solid #c2c2c2;
-    height: 32px;
-    padding: 10px;
+  background-color: #2d2c2c;
+  border: 1px solid #c2c2c2;
+  height: 32px;
+  padding: 10px;
 }
 
 h2 {
-    color: #C4C4C4;
-    text-align: center;
+  color: #c4c4c4;
+  text-align: center;
 }
 
 #tasks-pendentes {
-    font-size: 15px;
-    color: #067B95;
+  font-size: 15px;
+  color: #067b95;
 }
 
 .btn {
-    height: 32px;
+  height: 32px;
 }
 
 .acoes {
-    float: right;
+  float: right;
 }
 
 .fas {
-    color: white;
-    margin: 5px;
+  color: white;
+  margin: 5px;
 }

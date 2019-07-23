@@ -1,5 +1,7 @@
-let btnAdicionar = document.getElementById("btn-adicionar");
-let ulRecebe = document.getElementById("recebe-conteudo");
+const btnAdicionar = document.getElementById("btn-adicionar");
+const ulRecebe = document.getElementById("recebe-conteudo");
+const tagSpan = document.getElementById("quantidade-tasks");
+const recebeSpan = document.getElementById("recebe-span");
 
 function criaElementoComClasse(element, className) {
   let elemento = document.createElement(element);
@@ -7,7 +9,32 @@ function criaElementoComClasse(element, className) {
   return elemento;
 }
 
+function quantidadeDeTasks() {
+  const span = document.createElement("span");
+  let contandoTask = document.querySelectorAll('input[type=checkbox]');
+  let contaTask = 0;
+  let taskNova = 0;
+
+  for (let index = 0; index < contandoTask.length; index++) {
+    if (contandoTask[index].checked || btnAdicionar.click) {
+      contaTask += 1;
+    };
+  }
+
+  taskNova = tagSpan.innerText = contaTask;
+
+  if (taskNova === 1) {
+    taskNova = tagSpan.innerText = contaTask + " task adicionada.";
+  } else {
+    taskNova = tagSpan.innerText = contaTask + " tasks adicionadas.";
+  }
+
+  recebeSpan.appendChild(tagSpan);
+
+}
+
 btnAdicionar.addEventListener("click", () => {
+
   let novaTarefa = document.getElementById("nova-tarefa").value;
   let li = document.createElement("li");
   let div = criaElementoComClasse("div", "form-check");
@@ -27,33 +54,8 @@ btnAdicionar.addEventListener("click", () => {
   div.appendChild(divAcoes);
   divAcoes.appendChild(iPencil);
   divAcoes.appendChild(iTrash);
+
+  quantidadeDeTasks();
+
+
 });
-
-// TESTES COM A ARIEL
-// const pegandoEvento = document.getElementById("teste");
-// let mostrando = document.getElementById("app");
-// let quadradinho = document.getElementById("quadradinho");
-// let deFora = document.getElementById("de-fora");
-
-// pegandoEvento.addEventListener("keyup", e => {
-//     setTimeout(function () {
-//         console.log(e.target.value);
-//         mostrando.innerText = e.target.value;
-//     }, 50);
-// });
-
-// mostrando.addEventListener("click", () => {
-//     let divNova = document.createElement("div");
-//     divNova.className = 'bla'
-//     divNova.style = "background-color: coral; width: 100px; height: 100px;";
-//     divNova.addEventListener("click", function (event) {
-//         divNova.remove()
-//     });
-
-//     deFora.appendChild(divNova);
-
-// });
-
-// quadradinho.addEventListener("click", (e) => {
-//     quadradinho.remove();
-// });
