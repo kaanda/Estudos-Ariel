@@ -9,32 +9,33 @@ function criaElementoComClasse(element, className) {
   return elemento;
 }
 
-function quantidadeDeTasks() {
-  const span = document.createElement("span");
-  let contandoTask = document.querySelectorAll('input[type=checkbox]');
+function getQuantidadeDeTasks() {
+  let contandoTask = document.querySelectorAll("input[type=checkbox]");
   let contaTask = 0;
-  let taskNova = 0;
-
   for (let index = 0; index < contandoTask.length; index++) {
     if (contandoTask[index].checked || btnAdicionar.click) {
       contaTask += 1;
-    };
+    }
   }
+  return contaTask;
+}
 
-  taskNova = tagSpan.innerText = contaTask;
+function updateQuantidadeDeTasks() {
+  let contagem = getQuantidadeDeTasks();
+  addQuantidadeTaskNoHtml(contagem);
+}
 
-  if (taskNova === 1) {
-    taskNova = tagSpan.innerText = contaTask + " task adicionada.";
-  } else {
-    taskNova = tagSpan.innerText = contaTask + " tasks adicionadas.";
-  }
+function addQuantidadeTaskNoHtml(contaTask) {
+  tagSpan.innerText =
+    contaTask + (contaTask === 1 ? " task adicionada." : " tasks adicionadas.");
 
-  recebeSpan.appendChild(tagSpan);
-
+  // o código à cima é igual ao códígo abaixo
+  // contaTask === 1
+  //   ? (tagSpan.innerText = contaTask + " task adicionada.")
+  //   : (tagSpan.innerText = contaTask + " tasks adicionadas.");
 }
 
 btnAdicionar.addEventListener("click", () => {
-
   let novaTarefa = document.getElementById("nova-tarefa").value;
   let li = document.createElement("li");
   let div = criaElementoComClasse("div", "form-check");
@@ -55,7 +56,5 @@ btnAdicionar.addEventListener("click", () => {
   divAcoes.appendChild(iPencil);
   divAcoes.appendChild(iTrash);
 
-  quantidadeDeTasks();
-
-
+  updateQuantidadeDeTasks();
 });
