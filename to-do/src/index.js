@@ -1,6 +1,9 @@
 const btnAdicionar = document.getElementById("btn-adicionar");
 const ulRecebe = document.getElementById("recebe-conteudo");
-const tagSpan = document.getElementById("quantidade-tasks");
+const tagSpanQuantidadeTasks = document.getElementById("quantidade-tasks");
+const tagSpanMostraQtddTasksCheckadas = document.getElementById(
+  "tasks-checkadas"
+);
 const recebeSpan = document.getElementById("recebe-span");
 
 function criaElementoComClasse(element, className) {
@@ -11,13 +14,18 @@ function criaElementoComClasse(element, className) {
 
 function getQuantidadeDeTasks() {
   let contandoTask = document.querySelectorAll("input[type=checkbox]");
-  let contaTask = 0;
-  for (let index = 0; index < contandoTask.length; index++) {
-    if (contandoTask[index].checked || btnAdicionar.click) {
-      contaTask += 1;
-    }
-  }
-  return contaTask;
+
+  return contandoTask.length;
+}
+
+function addQuantidadeTaskNoHtml(contaTask) {
+  tagSpanQuantidadeTasks.innerText =
+    contaTask + (contaTask === 1 ? " task adicionada." : " tasks adicionadas.");
+
+  // o código à cima é igual ao códígo abaixo
+  // contaTask === 1
+  //   ? (tagSpan.innerText = contaTask + " task adicionada.")
+  //   : (tagSpan.innerText = contaTask + " tasks adicionadas.");
 }
 
 function updateQuantidadeDeTasks() {
@@ -25,14 +33,46 @@ function updateQuantidadeDeTasks() {
   addQuantidadeTaskNoHtml(contagem);
 }
 
-function addQuantidadeTaskNoHtml(contaTask) {
-  tagSpan.innerText =
-    contaTask + (contaTask === 1 ? " task adicionada." : " tasks adicionadas.");
+function getQuantidadeTaskCheckada() {
+  let recebeTaskCheckadaHtml = document.querySelectorAll(
+    "input[type=checkbox]:checked"
+  );
 
-  // o código à cima é igual ao códígo abaixo
-  // contaTask === 1
-  //   ? (tagSpan.innerText = contaTask + " task adicionada.")
-  //   : (tagSpan.innerText = contaTask + " tasks adicionadas.");
+  return recebeTaskCheckadaHtml.length;
+}
+
+function addQuantidadeTaskCheckadaNoHtml(contaTask) {
+  tagSpanMostraQtddTasksCheckadas.innerText =
+    contaTask <= 0
+      ? ""
+      : contaTask +
+        (contaTask === 1 ? " task selecionada." : " tasks selecionadas.");
+
+  //o código à cima e o código abaixo são iguais
+  // if (contaTask <= 0) {
+  //   tagSpanMostraQtddTasksCheckadas.innerText = "";
+  // } else {
+  //   tagSpanMostraQtddTasksCheckadas.innerText =
+  //     contaTask +
+  //     (contaTask === 1 ? " task selecionada." : " tasks selecionadas.");
+  // }
+}
+
+function updateQuantidadeDeTasksCheckada() {
+  let contagem = getQuantidadeTaskCheckada();
+  addQuantidadeTaskCheckadaNoHtml(contagem);
+}
+
+function addEventoCheckado() {
+  //pegar todos os elementos checkbox e para cada um add addEventListner("change", updateQuantidadeDeTasksCheckada);
+  let elementos = document.querySelectorAll("input[type=checkbox]");
+
+  for (let index = 0; index < elementos.length; index++) {
+    const element = elementos[index];
+    console.log(element);
+
+    element.addEventListener("change", () => updateQuantidadeDeTasksCheckada());
+  }
 }
 
 btnAdicionar.addEventListener("click", () => {
@@ -57,4 +97,5 @@ btnAdicionar.addEventListener("click", () => {
   divAcoes.appendChild(iTrash);
 
   updateQuantidadeDeTasks();
+  addEventoCheckado();
 });

@@ -1,9 +1,14 @@
 body {
   background: #2b2929;
 }
-span {
+
+.envolve-span-task {
+  display: flex;
+  flex-direction: column;
+}
+
+.span-quantidade-task {
   color: #ffffff;
-  margin-bottom: 1em;
 }
 
 ul {
@@ -47,7 +52,7 @@ input.form-control:focus {
   color: #ffffff;
 }
 
-.form-check-input:disabled ~ .form-check-label {
+.form-check-input:disabled~.form-check-label {
   text-decoration: line-through;
 }
 
