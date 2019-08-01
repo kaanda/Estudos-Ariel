@@ -21,15 +21,16 @@
             <div class="col" id="coluna-esquerda"></div>
 
             <div class="col-lg-8 col-12" id="coluna-meio">
-
-                <div class="input-group mb-3">
-                    <input type="text" id="nova-tarefa" class="form-control" placeholder="Nova tarefa"
-                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="btn-adicionar">Adicionar</button>
+                <form autocomplete="off" id="form-todo">
+                    <div class="input-group mb-3" id="div-da-novatarefa">
+                        <input type="text" id="nova-tarefa" class="form-control" placeholder="Nova tarefa"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit"
+                                id="btn-adicionar">Adicionar</button>
+                        </div>
                     </div>
-                </div>
-
+                </form>
                 <h2>To-do</h2>
                 <div class="container container-lista" id="recebe-span">
                     <div class="envolve-span-task">
