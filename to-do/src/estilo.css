@@ -41,6 +41,16 @@ input.form-control:focus {
   color: #ffffff;
 }
 
+.form-inline .form-control {
+  border: 0;
+  font-weight: bold;
+  padding: 0;
+}
+
+.form-inline .form-control:focus {
+  box-shadow: none;
+}
+
 .form-check {
   color: #c2c2c2;
 }
@@ -54,6 +64,14 @@ input.form-control:focus {
 
 .form-check-input:disabled~.form-check-label {
   text-decoration: line-through;
+}
+
+.form-check-input:checked~.form-check-label {
+  text-decoration: line-through;
+}
+
+.form-inline {
+  display: inline-flex;
 }
 
 .input-group-text {

@@ -7,6 +7,7 @@ const tagSpanMostraQtddTasksCheckadas = document.getElementById(
 );
 let novaTarefa = document.getElementById("nova-tarefa");
 const recebeSpan = document.getElementById("recebe-span");
+let contaTodo = 1;
 
 function criaElementoComClasse(element, className) {
   let elemento = document.createElement(element);
@@ -21,10 +22,10 @@ function getQuantidadeDeTasks() {
 
 function addQuantidadeTaskNoHtml(contaTask) {
   tagSpanQuantidadeTasks.innerText =
-    contaTask <= 0
-      ? ""
-      : contaTask +
-        (contaTask === 1 ? " task adicionada." : " tasks adicionadas.");
+    contaTask <= 0 ?
+    "" :
+    contaTask +
+    (contaTask === 1 ? " task adicionada." : " tasks adicionadas.");
 
   // o código à cima é igual ao códígo abaixo
   // contaTask === 1
@@ -46,10 +47,10 @@ function getQuantidadeTaskCheckada() {
 
 function addQuantidadeTaskCheckadaNoHtml(contaTask) {
   tagSpanMostraQtddTasksCheckadas.innerText =
-    contaTask <= 0
-      ? ""
-      : contaTask +
-        (contaTask === 1 ? " task selecionada." : " tasks selecionadas.");
+    contaTask <= 0 ?
+    "" :
+    contaTask +
+    (contaTask === 1 ? " task selecionada." : " tasks selecionadas.");
 
   //o código à cima e o código abaixo são iguais
   // if (contaTask <= 0) {
@@ -89,7 +90,7 @@ function criaTodo() {
   novaTarefa.value = "";
 }
 
-formTodo.addEventListener("submit", function() {
+formTodo.addEventListener("submit", function () {
   criaTodo();
 });
 
@@ -101,18 +102,39 @@ function criaHtmlTodo(valorTodo) {
   let aTrash = criaElementoComClasse("a", "fas fa-trash-alt");
   let label = criaElementoComClasse("label", "form-check-label");
   let checkboxNovo = criaElementoComClasse("input", "form-check-input");
+  let formInputEditar = criaElementoComClasse("form", "form-inline");
+  let inputEditar = criaElementoComClasse("input", "form-control");
 
   checkboxNovo.setAttribute("type", "checkbox");
+  checkboxNovo.setAttribute("id", `todo-${contaTodo}`);
   aPencil.setAttribute("href", "#");
   aTrash.setAttribute("href", "#");
+  label.setAttribute("for", `todo-${contaTodo++}`);
   label.innerText = valorTodo;
-  label.insertBefore(checkboxNovo, label.firstChild);
+  inputEditar.setAttribute("type", "text");
+  formInputEditar.setAttribute("hidden", "true");
+  inputEditar.value = valorTodo;
 
   aTrash.addEventListener("click", () => {
     deletaTodo(li);
   });
 
+  aPencil.addEventListener("click", () => {
+    formInputEditar.removeAttribute("hidden");
+    inputEditar.focus();
+    label.setAttribute("hidden", "true");
+  });
+
+  formInputEditar.addEventListener("submit", function () {
+    label.innerText = inputEditar.value;
+    label.removeAttribute("hidden");
+    formInputEditar.setAttribute("hidden", "true");
+  });
+
+  div.appendChild(checkboxNovo);
   div.appendChild(label);
+  formInputEditar.appendChild(inputEditar);
+  div.appendChild(formInputEditar);
   li.appendChild(div);
   ulRecebe.appendChild(li);
   div.appendChild(divAcoes);
