@@ -94,12 +94,25 @@ formTodo.addEventListener("submit", function () {
   criaTodo();
 });
 
+function criaBotao(className, clickDoBotao) {
+  const botao = criaElementoComClasse("a", className);
+  botao.setAttribute("href", "#");
+  botao.addEventListener("click", clickDoBotao);
+  return botao;
+};
+
 function criaHtmlTodo(valorTodo) {
   let li = document.createElement("li");
   let div = criaElementoComClasse("div", "form-check");
   let divAcoes = criaElementoComClasse("div", "acoes");
-  let aPencil = criaElementoComClasse("a", "fas fa-pencil-alt");
-  let aTrash = criaElementoComClasse("a", "fas fa-trash-alt");
+  let aPencil = criaBotao("fas fa-pencil-alt", () => {
+    formInputEditar.removeAttribute("hidden");
+    inputEditar.focus();
+    label.setAttribute("hidden", "true");
+  });
+  let aTrash = criaBotao("fas fa-trash-alt", () => {
+    deletaTodo(li);
+  });
   let label = criaElementoComClasse("label", "form-check-label");
   let checkboxNovo = criaElementoComClasse("input", "form-check-input");
   let formInputEditar = criaElementoComClasse("form", "form-inline");
@@ -107,23 +120,11 @@ function criaHtmlTodo(valorTodo) {
 
   checkboxNovo.setAttribute("type", "checkbox");
   checkboxNovo.setAttribute("id", `todo-${contaTodo}`);
-  aPencil.setAttribute("href", "#");
-  aTrash.setAttribute("href", "#");
   label.setAttribute("for", `todo-${contaTodo++}`);
   label.innerText = valorTodo;
   inputEditar.setAttribute("type", "text");
   formInputEditar.setAttribute("hidden", "true");
   inputEditar.value = valorTodo;
-
-  aTrash.addEventListener("click", () => {
-    deletaTodo(li);
-  });
-
-  aPencil.addEventListener("click", () => {
-    formInputEditar.removeAttribute("hidden");
-    inputEditar.focus();
-    label.setAttribute("hidden", "true");
-  });
 
   formInputEditar.addEventListener("submit", function () {
     label.innerText = inputEditar.value;
